@@ -1,0 +1,294 @@
+[
+  {
+    "_id": "b0fd5512-1c1d-47f3-89e6-344eb766e15f",
+    "name": "TeamChat Platform",
+    "goal": "A collaborative team chat app. Users should be able to create channels, invite members, and send real-time direct messages. It must support rich text formatting, file attachments, and active user indicators.",
+    "tasks": [
+      {
+        "id": "548615ef-7af6-4f42-bd89-b39debcdb6bd",
+        "title": "Project Setup & Technical Skeleton",
+        "userStory": "As a developer, I want to initialize the project codebase for TeamChat Platform so that the development team can work with consistent configurations.",
+        "description": "Set up the repository structure, configure ESLint, Prettier, and TypeScript compiler configurations. Create the initial server skeleton and frontend client scaffold.",
+        "acceptanceCriteria": [
+          "Vite is configured and serves a template application.",
+          "Express server runs on localhost with a functional health endpoint.",
+          "TypeScript compiles successfully in both client and server with no errors.",
+          "Project matches the goal: A collaborative team chat app. Users should be able to create channels, invite members, and send real-time direct messages. It must support rich text formatting, file attachments, and active user indicators."
+        ],
+        "status": "in_progress",
+        "priority": "high",
+        "storyPoints": 3,
+        "createdAt": "2026-07-11T17:16:00.382Z"
+      },
+      {
+        "id": "e2f34f97-66b6-4ed8-85c7-74f31c885533",
+        "title": "Database Schema Design & Repository Layer",
+        "userStory": "As a developer, I want to define the mongoose schemas and repository pattern so that we can store and retrieve project data reliably.",
+        "description": "Design schemas for Projects, Tasks, and Users. Create data access wrappers that handle error checking and provide logical helper functions. Ensure robust handling of database connectivity issues.",
+        "acceptanceCriteria": [
+          "Schemas are defined using TypeScript interfaces.",
+          "Connection handles errors and reconnects automatically.",
+          "Database operations include proper validation rules."
+        ],
+        "status": "todo",
+        "priority": "high",
+        "storyPoints": 5,
+        "createdAt": "2026-07-11T17:16:00.382Z"
+      },
+      {
+        "id": "3cf36705-781a-40fe-a3bb-214309f53d0e",
+        "title": "Core Dashboard API & WebSocket Service",
+        "userStory": "As a frontend developer, I want to query project data and receive real-time updates so that team members sync their task boards instantly.",
+        "description": "Build REST endpoints for fetching project boards and updating task statuses. Integrate Socket.io on the backend to broadcast status changes to rooms grouped by Project ID.",
+        "acceptanceCriteria": [
+          "GET /api/projects returns a full list of projects.",
+          "PUT /api/projects/:id/tasks/:taskId successfully updates task status and priority.",
+          "Socket.io server broadcasts a taskUpdated event to the project channel when changes occur."
+        ],
+        "status": "todo",
+        "priority": "medium",
+        "storyPoints": 5,
+        "createdAt": "2026-07-11T17:16:00.382Z"
+      },
+      {
+        "id": "d3a4ce9b-331e-442f-a43f-6b2769130f61",
+        "title": "Interactive Board Client & Redux Integration",
+        "userStory": "As a project manager, I want to interact with the task board for TeamChat Platform in real-time so that I can see the exact progress of my team.",
+        "description": "Build a gorgeous responsive Kanban board layout using Bootstrap. Integrate Redux Toolkit to manage project state. Connect socket.io-client to receive and dispatch updates automatically.",
+        "acceptanceCriteria": [
+          "Tasks are displayed in columns corresponding to their state (todo, in_progress, review, done).",
+          "Moving a task updates state via Redux and triggers an API update.",
+          "Live notifications display when another client moves a task."
+        ],
+        "status": "todo",
+        "priority": "medium",
+        "storyPoints": 8,
+        "createdAt": "2026-07-11T17:16:00.382Z"
+      }
+    ],
+    "createdAt": "2026-07-11T17:16:00.383Z"
+  },
+  {
+    "_id": "35f29dfe-f647-48b1-a353-a4da1c6c81f9",
+    "name": "\"PortfolioGenie\" – AI-Powered Developer Portfolio Builder ",
+    "goal": "A platform that helps junior developers create professional, high-performance portfolios by analyzing their GitHub activity and generating optimized content. • UX/UI Design: Follow the design thinking process to create user personas and wireframes that prioritize developer aesthetics and accessibility.  • Core Logic (React & Hooks): Utilize React Hooks (useState, useEffect, and custom hooks) to create a dynamic, multi-step form where users can input their projects. Use React Router for seamless programmatic navigation between the builder and the live preview.  • Prompt Engineering Integration: Leverage AI to optimize project descriptions for SEO and readability, and use prompt engineering techniques to suggest professional \"About Me\" sections based on the user's coding style.  • Best Practices: Adhere to industry-standard coding conventions and design patterns to ensure the generated portfolio code is clean and maintainable.  ",
+    "tasks": [
+      {
+        "id": "e3fe6657-9ba0-4e43-8de0-fda7c1fddb2e",
+        "title": "Project Setup & Technical Skeleton",
+        "userStory": "As a developer, I want to initialize the project codebase for \"PortfolioGenie\" – AI-Powered Developer Portfolio Builder  so that the development team can work with consistent configurations.",
+        "description": "Set up the repository structure, configure ESLint, Prettier, and TypeScript compiler configurations. Create the initial server skeleton and frontend client scaffold.",
+        "acceptanceCriteria": [
+          "Vite is configured and serves a template application.",
+          "Express server runs on localhost with a functional health endpoint.",
+          "TypeScript compiles successfully in both client and server with no errors.",
+          "Project matches the goal: A platform that helps junior developers create professional, high-performance portfolios by analyzing their GitHub activity and generating optimized content. • UX/UI Design: Follow the design thinking process to create user personas and wireframes that prioritize developer aesthetics and accessibility.  • Core Logic (React & Hooks): Utilize React Hooks (useState, useEffect, and custom hooks) to create a dynamic, multi-step form where users can input their projects. Use React Router for seamless programmatic navigation between the builder and the live preview.  • Prompt Engineering Integration: Leverage AI to optimize project descriptions for SEO and readability, and use prompt engineering techniques to suggest professional \"About Me\" sections based on the user's coding style.  • Best Practices: Adhere to industry-standard coding conventions and design patterns to ensure the generated portfolio code is clean and maintainable.  "
+        ],
+        "status": "review",
+        "priority": "high",
+        "storyPoints": 2,
+        "createdAt": "2026-07-11T17:57:27.127Z"
+      },
+      {
+        "id": "f4284bca-a01b-464f-9da9-9d8c1ba55b54",
+        "title": "Database Schema Design & Repository Layer",
+        "userStory": "As a developer, I want to define the mongoose schemas and repository pattern so that we can store and retrieve project data reliably.",
+        "description": "Design schemas for Projects, Tasks, and Users. Create data access wrappers that handle error checking and provide logical helper functions. Ensure robust handling of database connectivity issues.",
+        "acceptanceCriteria": [
+          "Schemas are defined using TypeScript interfaces.",
+          "Connection handles errors and reconnects automatically.",
+          "Database operations include proper validation rules."
+        ],
+        "status": "done",
+        "priority": "high",
+        "storyPoints": 5,
+        "createdAt": "2026-07-11T17:57:27.127Z"
+      },
+      {
+        "id": "e072072d-5f62-4522-a3ed-210c97f52a2b",
+        "title": "Core Dashboard API & WebSocket Service",
+        "userStory": "As a frontend developer, I want to query project data and receive real-time updates so that team members sync their task boards instantly.",
+        "description": "Build REST endpoints for fetching project boards and updating task statuses. Integrate Socket.io on the backend to broadcast status changes to rooms grouped by Project ID.",
+        "acceptanceCriteria": [
+          "GET /api/projects returns a full list of projects.",
+          "PUT /api/projects/:id/tasks/:taskId successfully updates task status and priority.",
+          "Socket.io server broadcasts a taskUpdated event to the project channel when changes occur."
+        ],
+        "status": "todo",
+        "priority": "medium",
+        "storyPoints": 2,
+        "createdAt": "2026-07-11T17:57:27.127Z"
+      },
+      {
+        "id": "d9d50b0d-b2d5-4b7d-b460-cf31854201c1",
+        "title": "Interactive Board Client & Redux Integration",
+        "userStory": "As a project manager, I want to interact with the task board for \"PortfolioGenie\" – AI-Powered Developer Portfolio Builder  in real-time so that I can see the exact progress of my team.",
+        "description": "Build a gorgeous responsive Kanban board layout using Bootstrap. Integrate Redux Toolkit to manage project state. Connect socket.io-client to receive and dispatch updates automatically.",
+        "acceptanceCriteria": [
+          "Tasks are displayed in columns corresponding to their state (todo, in_progress, review, done).",
+          "Moving a task updates state via Redux and triggers an API update.",
+          "Live notifications display when another client moves a task."
+        ],
+        "status": "todo",
+        "priority": "medium",
+        "storyPoints": 8,
+        "createdAt": "2026-07-11T17:57:27.127Z"
+      }
+    ],
+    "createdAt": "2026-07-11T17:57:27.128Z"
+  },
+  {
+    "_id": "fcd5510d-7b11-413b-afba-8e12ebbc65a8",
+    "name": "\"DevReview AI\" – Collaborative Code Style & Documentation Hub ",
+    "goal": "A centralized hub for teams to upload code snippets and receive AI-driven feedback on code style, patterns, and documentation. • Frontend (React & Advanced CSS): Build a highly interactive interface using HTML5 Canvas or SVG for visualizing code structure and CSS Animations/Keyframes for smooth UI transitions.  • Backend (Node.js & Security): Use Express middleware to handle file uploads and implement Authentication/Authorization with JWT (JSON Web Tokens) to protect private code snippets.  • Prompt Engineering & Code Quality: Use AI to analyze uploaded JavaScript or TypeScript code against \"Code style, patterns and best practices\". The AI will provide suggestions for refactoring and automatically draft functional documentation and unit test stubs for the user.  ",
+    "tasks": [
+      {
+        "id": "ad8c3d49-fbd4-4bb3-9a7e-bd55844c1600",
+        "title": "Project Setup & Technical Skeleton",
+        "userStory": "As a developer, I want to initialize the project codebase for \"DevReview AI\" – Collaborative Code Style & Documentation Hub  so that the development team can work with consistent configurations.",
+        "description": "Set up the repository structure, configure ESLint, Prettier, and TypeScript compiler configurations. Create the initial server skeleton and frontend client scaffold.",
+        "acceptanceCriteria": [
+          "Vite is configured and serves a template application.",
+          "Express server runs on localhost with a functional health endpoint.",
+          "TypeScript compiles successfully in both client and server with no errors.",
+          "Project matches the goal: A centralized hub for teams to upload code snippets and receive AI-driven feedback on code style, patterns, and documentation. • Frontend (React & Advanced CSS): Build a highly interactive interface using HTML5 Canvas or SVG for visualizing code structure and CSS Animations/Keyframes for smooth UI transitions.  • Backend (Node.js & Security): Use Express middleware to handle file uploads and implement Authentication/Authorization with JWT (JSON Web Tokens) to protect private code snippets.  • Prompt Engineering & Code Quality: Use AI to analyze uploaded JavaScript or TypeScript code against \"Code style, patterns and best practices\". The AI will provide suggestions for refactoring and automatically draft functional documentation and unit test stubs for the user.  "
+        ],
+        "status": "done",
+        "priority": "high",
+        "storyPoints": 5,
+        "createdAt": "2026-07-11T19:32:46.134Z"
+      },
+      {
+        "id": "c8771379-c82f-49af-931c-dd0346565386",
+        "title": "Database Schema Design & Repository Layer",
+        "userStory": "As a developer, I want to define the mongoose schemas and repository pattern so that we can store and retrieve project data reliably.",
+        "description": "Design schemas for Projects, Tasks, and Users. Create data access wrappers that handle error checking and provide logical helper functions. Ensure robust handling of database connectivity issues.",
+        "acceptanceCriteria": [
+          "Schemas are defined using TypeScript interfaces.",
+          "Connection handles errors and reconnects automatically.",
+          "Database operations include proper validation rules."
+        ],
+        "status": "done",
+        "priority": "high",
+        "storyPoints": 5,
+        "createdAt": "2026-07-11T19:32:46.134Z"
+      },
+      {
+        "id": "04871b46-2e76-40c3-8966-af8968a05329",
+        "title": "Core Dashboard API & WebSocket Service",
+        "userStory": "As a frontend developer, I want to query project data and receive real-time updates so that team members sync their task boards instantly.",
+        "description": "Build REST endpoints for fetching project boards and updating task statuses. Integrate Socket.io on the backend to broadcast status changes to rooms grouped by Project ID.",
+        "acceptanceCriteria": [
+          "GET /api/projects returns a full list of projects.",
+          "PUT /api/projects/:id/tasks/:taskId successfully updates task status and priority.",
+          "Socket.io server broadcasts a taskUpdated event to the project channel when changes occur."
+        ],
+        "status": "in_progress",
+        "priority": "medium",
+        "storyPoints": 5,
+        "createdAt": "2026-07-11T19:32:46.134Z"
+      },
+      {
+        "id": "ce203317-0b0c-4700-b55f-59bfbe1c2551",
+        "title": "Interactive Board Client & Redux Integration",
+        "userStory": "As a project manager, I want to interact with the task board for \"DevReview AI\" – Collaborative Code Style & Documentation Hub  in real-time so that I can see the exact progress of my team.",
+        "description": "Build a gorgeous responsive Kanban board layout using Bootstrap. Integrate Redux Toolkit to manage project state. Connect socket.io-client to receive and dispatch updates automatically.",
+        "acceptanceCriteria": [
+          "Tasks are displayed in columns corresponding to their state (todo, in_progress, review, done).",
+          "Moving a task updates state via Redux and triggers an API update.",
+          "Live notifications display when another client moves a task."
+        ],
+        "status": "todo",
+        "priority": "medium",
+        "storyPoints": 8,
+        "createdAt": "2026-07-11T19:32:46.134Z"
+      },
+      {
+        "id": "db0be406-3e66-42aa-9cfc-8cefa217336b",
+        "title": "Authentication & Session Security",
+        "userStory": "As an active user, I want to secure my account with a password so that my private dashboard tasks are protected.",
+        "description": "Implement JWT authentication. Add bcrypt for hashing passwords. Set up authorization headers and state protection in React Router.",
+        "acceptanceCriteria": [
+          "Password database records are salted and hashed using bcrypt.",
+          "JWT token is returned upon successful authentication.",
+          "Protected API endpoints reject requests without a valid bearer token."
+        ],
+        "status": "todo",
+        "priority": "high",
+        "storyPoints": 5,
+        "createdAt": "2026-07-11T19:32:46.134Z"
+      }
+    ],
+    "createdAt": "2026-07-11T19:32:46.135Z"
+  },
+  {
+    "_id": "8bc76aba-7c00-4c7c-9892-3dbf14e3616e",
+    "name": "\"AI-Sprint\" – Agile Project Management & Task Automator ",
+    "goal": "This project is a collaborative tool for development teams that uses AI to transform high-level project ideas into actionable technical tasks. • Frontend (React & TypeScript): Use TypeScript for robust, type-safe components. The UI should be built with Bootstrap for a mobile-first, responsive grid system and include Advanced Components like Modals and Navbars for a professional feel.  • Prompt Engineering Integration: Implement intelligent, context-aware prompts that take a user’s \"Project Goal\" and use content generation to break it down into specific user stories and acceptance criteria.  • Backend & State Management: Manage the application state using Redux Toolkit to handle real-time task updates across the team. The backend will be a Node.js and Express server providing a RESTful API to store tasks in a MongoDB database.  • DevOps & Reliability: The entire application should be containerized using Docker to ensure consistent deployment environments.  ",
+    "tasks": [
+      {
+        "id": "dc37fb0f-5c7a-482f-98f1-d7178fad43a3",
+        "title": "Project Setup & Technical Skeleton",
+        "userStory": "As a developer, I want to initialize the project codebase for \"AI-Sprint\" – Agile Project Management & Task Automator  so that the development team can work with consistent configurations.",
+        "description": "Set up the repository structure, configure ESLint, Prettier, and TypeScript compiler configurations. Create the initial server skeleton and frontend client scaffold.",
+        "acceptanceCriteria": [
+          "Vite is configured and serves a template application.",
+          "Express server runs on localhost with a functional health endpoint.",
+          "TypeScript compiles successfully in both client and server with no errors.",
+          "Project matches the goal: This project is a collaborative tool for development teams that uses AI to transform high-level project ideas into actionable technical tasks. • Frontend (React & TypeScript): Use TypeScript for robust, type-safe components. The UI should be built with Bootstrap for a mobile-first, responsive grid system and include Advanced Components like Modals and Navbars for a professional feel.  • Prompt Engineering Integration: Implement intelligent, context-aware prompts that take a user’s \"Project Goal\" and use content generation to break it down into specific user stories and acceptance criteria.  • Backend & State Management: Manage the application state using Redux Toolkit to handle real-time task updates across the team. The backend will be a Node.js and Express server providing a RESTful API to store tasks in a MongoDB database.  • DevOps & Reliability: The entire application should be containerized using Docker to ensure consistent deployment environments.  "
+        ],
+        "status": "todo",
+        "priority": "high",
+        "storyPoints": 3,
+        "createdAt": "2026-07-12T00:14:10.933Z"
+      },
+      {
+        "id": "57493507-356f-4b17-998e-6092253cc962",
+        "title": "Database Schema Design & Repository Layer",
+        "userStory": "As a developer, I want to define the mongoose schemas and repository pattern so that we can store and retrieve project data reliably.",
+        "description": "Design schemas for Projects, Tasks, and Users. Create data access wrappers that handle error checking and provide logical helper functions. Ensure robust handling of database connectivity issues.",
+        "acceptanceCriteria": [
+          "Schemas are defined using TypeScript interfaces.",
+          "Connection handles errors and reconnects automatically.",
+          "Database operations include proper validation rules."
+        ],
+        "status": "todo",
+        "priority": "high",
+        "storyPoints": 5,
+        "createdAt": "2026-07-12T00:14:10.933Z"
+      },
+      {
+        "id": "859a5e2c-82ec-4cba-b03a-c1ce12ab1d76",
+        "title": "Core Dashboard API & WebSocket Service",
+        "userStory": "As a frontend developer, I want to query project data and receive real-time updates so that team members sync their task boards instantly.",
+        "description": "Build REST endpoints for fetching project boards and updating task statuses. Integrate Socket.io on the backend to broadcast status changes to rooms grouped by Project ID.",
+        "acceptanceCriteria": [
+          "GET /api/projects returns a full list of projects.",
+          "PUT /api/projects/:id/tasks/:taskId successfully updates task status and priority.",
+          "Socket.io server broadcasts a taskUpdated event to the project channel when changes occur."
+        ],
+        "status": "todo",
+        "priority": "medium",
+        "storyPoints": 5,
+        "createdAt": "2026-07-12T00:14:10.933Z"
+      },
+      {
+        "id": "d8185c13-2a22-41bc-beac-bef4f240172c",
+        "title": "Interactive Board Client & Redux Integration",
+        "userStory": "As a project manager, I want to interact with the task board for \"AI-Sprint\" – Agile Project Management & Task Automator  in real-time so that I can see the exact progress of my team.",
+        "description": "Build a gorgeous responsive Kanban board layout using Bootstrap. Integrate Redux Toolkit to manage project state. Connect socket.io-client to receive and dispatch updates automatically.",
+        "acceptanceCriteria": [
+          "Tasks are displayed in columns corresponding to their state (todo, in_progress, review, done).",
+          "Moving a task updates state via Redux and triggers an API update.",
+          "Live notifications display when another client moves a task."
+        ],
+        "status": "todo",
+        "priority": "medium",
+        "storyPoints": 8,
+        "createdAt": "2026-07-12T00:14:10.933Z"
+      }
+    ],
+    "userId": "2f1b92fe-6b7a-4106-89ca-683215810c98",
+    "createdAt": "2026-07-12T00:14:10.933Z"
+  }
+]

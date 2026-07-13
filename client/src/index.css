@@ -1,0 +1,182 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --color-todo: #0dcaf0;
+  --color-in-progress: #ffc107;
+  --color-review: #6f42c1;
+  --color-done: #198754;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa; /* Standard Bootstrap light background */
+  color: #212529; /* Standard Bootstrap body text */
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .brand-font {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Kanban Columns */
+.kanban-column {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.025);
+}
+
+.kanban-column-todo { border-top: 4px solid var(--color-todo); }
+.kanban-column-inprogress { border-top: 4px solid var(--color-in-progress); }
+.kanban-column-review { border-top: 4px solid var(--color-review); }
+.kanban-column-done { border-top: 4px solid var(--color-done); }
+
+/* Task Cards */
+.task-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.03);
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+.task-card-high { border-left: 4px solid #dc3545; }
+.task-card-medium { border-left: 4px solid #fd7e14; }
+.task-card-low { border-left: 4px solid #198754; }
+
+/* Badges styling */
+.badge-priority {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-low { background: rgba(25, 135, 84, 0.1); color: #198754; border: 1px solid rgba(25, 135, 84, 0.2); }
+.badge-medium { background: rgba(253, 126, 20, 0.1); color: #fd7e14; border: 1px solid rgba(253, 126, 20, 0.2); }
+.badge-high { background: rgba(220, 53, 69, 0.1); color: #dc3545; border: 1px solid rgba(220, 53, 69, 0.2); }
+
+/* Sidebar lists */
+.project-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #ffffff;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
+}
+
+.project-list-item:hover {
+  background-color: #f8f9fa;
+  border-color: rgba(0,0,0,0.1);
+}
+
+.project-list-item.active {
+  background-color: #e7f1ff; /* Bootstrap primary 100 */
+  border-color: #0d6efd;
+  font-weight: 600;
+}
+
+.project-list-item.active .text-light {
+  color: #0d6efd !important;
+}
+
+.project-list-item.active .text-muted {
+  color: #084298 !important;
+}
+
+/* Custom list-group for acceptance criteria */
+.criterion-item {
+  background-color: #f8f9fa;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: #212529;
+}
+
+/* Dev blueprint formatting */
+.blueprint-area {
+  background-color: #f8f9fa;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  max-height: 500px;
+  overflow-y: auto;
+  font-family: 'Consolas', 'Monaco', monospace;
+  color: #212529;
+}
+
+/* Toast/Notification popup styling */
+.toast-container-custom {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1060;
+}
+
+.toast-custom {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  color: #212529;
+  border-radius: 8px;
+  padding: 12px 20px;
+  margin-top: 8px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Override previous dark text classes to look normal in light theme */
+.text-light, .text-white {
+  color: #212529 !important; /* Force to dark text for now, we'll fix HTML later */
+}
+
+/* Adjust text muted */
+.text-muted {
+  color: #6c757d !important;
+}
