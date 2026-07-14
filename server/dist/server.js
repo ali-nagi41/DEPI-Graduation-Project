@@ -11,6 +11,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const path_1 = __importDefault(require("path"));
 const db_1 = __importDefault(require("./services/db"));
 const api_1 = __importDefault(require("./routes/api"));
+const auth_1 = __importDefault(require("./routes/auth"));
 const socketHandler_1 = __importDefault(require("./sockets/socketHandler"));
 // Load environment variables
 dotenv_1.default.config();
@@ -29,6 +30,7 @@ app.set('io', io);
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 // API Routes
+app.use('/api/auth', auth_1.default);
 app.use('/api', api_1.default);
 // Socket.io connections
 (0, socketHandler_1.default)(io);

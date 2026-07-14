@@ -19,12 +19,15 @@ const TaskSchema = new mongoose_1.Schema({
         default: 'medium'
     },
     storyPoints: { type: Number, default: 1 },
+    assignee: { type: String, default: null },
     createdAt: { type: Date, default: Date.now }
 }, { _id: false });
 const ProjectSchema = new mongoose_1.Schema({
     name: { type: String, required: true },
     goal: { type: String, required: true },
     tasks: [TaskSchema],
+    userId: { type: String, required: true },
+    teamMembers: [{ type: String }],
     createdAt: { type: Date, default: Date.now }
 });
 exports.Project = (0, mongoose_1.model)('Project', ProjectSchema);

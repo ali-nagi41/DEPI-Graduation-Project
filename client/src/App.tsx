@@ -295,7 +295,7 @@ function App() {
               <div className="flex-grow-1">
                 <KanbanBoard 
                   project={selectedProject} 
-                  onSelectTask={(task) => setSelectedTask(task)} 
+                  onSelectTask={(task: any) => setSelectedTask(task)} 
                 />
               </div>
 

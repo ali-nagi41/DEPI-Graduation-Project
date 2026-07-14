@@ -42,7 +42,10 @@ class GeminiService {
 
     const prompt = `
 You are an expert Agile Product Owner and Technical Lead.
-Your task is to take a Project Name: "${projectName}" and a High-Level Project Goal: "${goal}", and decompose it into 4-6 specific, actionable, and technical Agile Tasks.
+Your task is to take a Project Name: "${projectName}" and a High-Level Project Goal: "${goal}", and decompose it into exactly 3 specific, actionable, and technical Agile Tasks.
+CRITICAL REQUIREMENT: 
+- Exactly 2 of the tasks MUST be "Normal/Hard" difficulty (represented by "priority": "high" or "medium" and "storyPoints": 5 or 8).
+- Exactly 1 of the tasks MUST be "Easy" difficulty (represented by "priority": "low" and "storyPoints": 1 or 2).
 ${teamPrompt}
 
 Each task must conform to the following JSON structure:
@@ -213,6 +216,92 @@ Format the output clearly using standard markdown.
   }
 
   private getMockCodeTemplate(taskTitle: string, description: string): string {
+    let codeSnippet = '';
+    const titleLower = taskTitle.toLowerCase();
+
+    if (titleLower.includes('auth') || titleLower.includes('login') || titleLower.includes('security')) {
+      codeSnippet = `// src/middleware/auth.ts
+import jwt from 'jsonwebtoken';
+import { Request, Response, NextFunction } from 'express';
+
+export function authenticateToken(req: Request, res: Response, next: NextFunction) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (!token) return res.sendStatus(401);
+
+  jwt.verify(token, process.env.JWT_SECRET as string, (err, user) => {
+    if (err) return res.sendStatus(403);
+    req.user = user;
+    next();
+  });
+}`;
+    } else if (titleLower.includes('schema') || titleLower.includes('database') || titleLower.includes('model')) {
+      codeSnippet = `// src/models/Project.ts
+import mongoose, { Schema, Document } from 'mongoose';
+
+export interface IProject extends Document {
+  name: string;
+  goal: string;
+  tasks: any[];
+}
+
+const ProjectSchema: Schema = new Schema({
+  name: { type: String, required: true },
+  goal: { type: String, required: true },
+  tasks: [{ type: Schema.Types.Mixed }]
+}, { timestamps: true });
+
+export default mongoose.model<IProject>('Project', ProjectSchema);`;
+    } else if (titleLower.includes('client') || titleLower.includes('frontend') || titleLower.includes('ui') || titleLower.includes('board')) {
+      codeSnippet = `// src/components/Board.tsx
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTasks } from '../store/projectSlice';
+
+export const BoardComponent: React.FC = () => {
+  const dispatch = useDispatch();
+  const tasks = useSelector((state: any) => state.project.tasks);
+
+  useEffect(() => {
+    dispatch(fetchTasks());
+  }, [dispatch]);
+
+  return (
+    <div className="board-container d-flex gap-4">
+      {/* Kanban columns mapped here */}
+      {tasks.map(task => (
+        <div key={task.id} className="task-card p-3 shadow-sm rounded">
+          <h5>{task.title}</h5>
+        </div>
+      ))}
+    </div>
+  );
+};`;
+    } else {
+      const functionName = taskTitle.split(' ').map(w => w.replace(/[^a-zA-Z]/g, '')).join('');
+      codeSnippet = `// src/api/routes/${functionName.toLowerCase()}Route.ts
+import { Router } from 'express';
+
+const router = Router();
+
+/**
+ * Endpoint generated for: ${taskTitle}
+ */
+router.post('/execute', async (req, res) => {
+  try {
+    // TODO: Implement ${taskTitle} logic here
+    const result = { status: 'success', message: 'Task executed' };
+    
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+export default router;`;
+    }
+
     return `### 💡 Dev Blueprint: ${taskTitle}
 
 This blueprint was generated in **Mock AI Mode** (GEMINI_API_KEY is not configured).
@@ -226,44 +315,13 @@ This blueprint was generated in **Mock AI Mode** (GEMINI_API_KEY is not configur
 Here is a boilerplate template designed for: *"${taskTitle}"*
 
 \`\`\`typescript
-// src/services/taskService.ts
-export interface TaskUpdatePayload {
-  status?: 'todo' | 'in_progress' | 'review' | 'done';
-  priority?: 'low' | 'medium' | 'high';
-  storyPoints?: number;
-}
-
-/**
- * Updates a task in the backend API.
- * @param projectId - The project database ID.
- * @param taskId - The unique task UUID.
- * @param updates - Partial task properties to apply.
- */
-export async function updateTaskOnServer(
-  projectId: string, 
-  taskId: string, 
-  updates: TaskUpdatePayload
-): Promise<any> {
-  const response = await fetch(\`/api/projects/\${projectId}/tasks/\${taskId}\`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(updates),
-  });
-
-  if (!response.ok) {
-    throw new Error('Failed to update task: ' + response.statusText);
-  }
-
-  return await response.json();
-}
+${codeSnippet}
 \`\`\`
 
-#### ✅ Verification Steps
-1. **Mock Verification**: Run standard compiler checks to verify file syntax.
-2. **API Verification**: Perform a mock \`PUT\` request using Postman or our UI actions.
-3. **Logs Verification**: Inspect backend server logs to confirm that database updates were executed without error.
+#### ✅ Verification
+1. Run \`npm run test\` to ensure no regressions.
+2. Verify that WebSocket events are correctly broadcasting.
+3. Check network tab for any 401/403 HTTP errors.
 `;
   }
 }
