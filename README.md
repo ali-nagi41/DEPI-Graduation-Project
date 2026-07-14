@@ -1,7 +1,7 @@
 # AI-Sprint: Agile Project Management & Task Automator
 
 Welcome to AI-Sprint! This project was built by the DEPI Graduation Project Engineering Pioneers:
-- **Ali Ahmed Nagy Ahmed** (Software Engineer, Team Lead & PM) - [GitHub](https://github.com/ali-nagi41)
+- **Ali Ahmed Nagy Ahmed** (Software Engineer) - [GitHub](https://github.com/ali-nagi41)
 - **Fatma Walied Saied Mohamed** (Software Engineer) - [GitHub](https://github.com/fatmawalied78-tech)
 - **Shams Hany Mohamed Hassan** (Software Engineer) - [GitHub](https://github.com/shamshassabo057-ui)
 - **Makarious Moamen Maher Masoud** (Software Engineer) - [GitHub](https://github.com/makariousmoamenn)
