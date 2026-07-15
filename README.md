@@ -19,4 +19,4 @@ You can access the live running workspace from anywhere, including mobile device
 
 ## Setup Instructions
 1. Install dependencies: `cd server && npm ci && cd ../client && npm ci`
-2. Start the server & client: `npm start`
+2. Start the server & client: `npm run dev`
